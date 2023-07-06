@@ -1,7 +1,5 @@
 #include "trinomial.h"
 
-#include <math.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 int trinomial(const int n, const int k) {
