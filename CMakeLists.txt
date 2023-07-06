@@ -7,5 +7,6 @@ add_executable(main)
 target_sources(main PRIVATE src/main.c
                             src/binomial.c
                             src/trinomial.c
-                            src/fibonacci.c)
+                            src/fibonacci.c
+                            src/function.c)
 

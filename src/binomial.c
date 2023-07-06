@@ -1,5 +1,8 @@
 #include "binomial.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+
 int binomial(const int n, const int k) {
   if (n == k || k == 0) {
     return 1;
