@@ -47,9 +47,9 @@ $F_n$. A better approach than calculating $F_n$ using $F_{n-1}$ and $F_{n-2}$
 would be to calculate it from the smallest piece we know, i.e. $F_0$ and 
 $F_1$ and then $F_2$. The concept could be visualized as follows:
 
-| **Index**  | $0$ | $1$ | $2$     | $3$       | $4$     | $5$     |
-|------------|-----|-----|---------|-----------|---------|---------|
-| **Result** | $0$ | $1$ | $0+1=1$ | $1+1=2$   | $1+2=3$ | $2+3=5$ |
+| $n$   | $0$ | $1$ | $2$     | $3$       | $4$     | $5$     |
+|-------|-----|-----|---------|-----------|---------|---------|
+| $F_n$ | $0$ | $1$ | $0+1=1$ | $1+1=2$   | $1+2=3$ | $2+3=5$ |
 
 This way we don't need to calculate a subproblem multiple times. 
 The code for a primitive calculation storing all calculated values 
