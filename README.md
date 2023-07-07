@@ -102,7 +102,7 @@ int binomial(const int n, const int k) {
 
 Applying the learnings from above we can calculate the binomial coefficients
 using a matrix:
-| 0 | 1 | 2 | 3 | k/n |
+| 0 | 1 | 2 | 3 |     |
 |---|---|---|---|-----|
 | 1 |   |   |   |  0  |
 |---|---|---|---|-----|
