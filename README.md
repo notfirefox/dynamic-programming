@@ -66,6 +66,10 @@ int fibonacci_array(const int n) {
   return array[n];
 }
 ```
+At this point there is one more optimization that could me made regarding
+its memory usage. In order to calculate $F_n$ we only need to store $F_{n-1}$
+and $F_{n-2}$. So we do not to store the whole sequence of fibonacci numbers
+inside of an array.
 
 WIP
 
