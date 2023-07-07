@@ -81,6 +81,7 @@ int dynamic_fibonacci(const int n) {
   }
   return x;
 }
+```
 
 ## Binomial Coefficients
 WIP
