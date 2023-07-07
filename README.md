@@ -188,7 +188,7 @@ aforementioned rules.
 |  $2$                | $0$  | $1$  | $2$  | $3$ | $2$ | $1$ | $0$ |
 |  $3$                | $1$  | $3$  | $6$  | $7$ | $6$ | $3$ | $1$ |
 
-An example of how that could be done using code is shown here.
+An example of how that could be done using code is shown below.
 ```C
 int dynamic_trinomial(const int n, const int k) {
   const int offset = n;
