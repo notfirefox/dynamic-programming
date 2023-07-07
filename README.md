@@ -102,6 +102,7 @@ int binomial(const int n, const int k) {
 
 ```mermaid
 graph TD;
+    5C3(5C3);
     5C3-->5C3_4C2(4C2);
     5C3-->5C3_4C3(4C3);
     5C3_4C2-->5C3_4C2_3C1(3C1);
