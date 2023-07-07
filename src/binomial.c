@@ -11,10 +11,10 @@ int binomial(const int n, const int k) {
 }
 
 int dynamic_binomial(const int n, const int k) {
-  int matrix[n + 1][k + 1];
+  int matrix[n + 1][n + 1];
 
   for (int i = 0; i <= n; i++) {
-    for (int j = 0; j <= k; j++) {
+    for (int j = 0; j <= n; j++) {
       if (i == j || j == 0) {
         matrix[i][j] = 1;
       } else {
