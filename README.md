@@ -46,9 +46,9 @@ would be to calculate it from the smallest piece we know, i.e. $F_0$ and $F_1$ a
 The concept could be visualized as follows:
 
 <!-- TODO: This graph currently looks very messy. Look into ways to improve its appearance -->
-| $F_0$ | $F_1$ | $F_2$       | $F_3$       | $F_4$       | $F_5$    |
-|-------|-------|-------------|-------------|-------------|----------|
-| 0     | 1     | $F_0+F_1$   | $F_1+F_2$   | $F_2+F_3$   | $F_3+F_4$|
+| **Index**  | $0$ | $1$ | $2$       | $3$       | $4$       | $5$      |
+|------------|-----|-----|-----------|-----------|-----------|----------|
+| **Result** | 0   | 1   | $F_0+F_1$ | $F_1+F_2$ | $F_2+F_3$ | $F_3+F_4$|
 
 This way we don't need to calculate a subproblem multiple times. The code for a primitive
 calculation storing all calculated values could like as follows.
