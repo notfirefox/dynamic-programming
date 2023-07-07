@@ -161,3 +161,47 @@ WIP
 ```math
 \binom{n}{k}_2 = \binom{n-1}{k-1}_2 + \binom{n-1}{k}_2 + \binom{n-1}{k+1}_2
 ```
+
+WIP
+```C
+int trinomial(const int n, const int k) {
+  if (abs(k) == n) {
+    return 1;
+  } else if (abs(k) > n) {
+    return 0;
+  }
+  return trinomial(n - 1, k - 1) + trinomial(n - 1, k) +
+         trinomial(n - 1, k + 1);
+}
+```
+
+WIP
+|n\k| -3 | -2 | -1 | 0 | 1 | 2 | 3 |
+|---|----|----|----|---|---|---|---|
+| 0 | 0  | 0  | 0  | 1 | 0 | 0 | 0 |
+| 1 | 0  | 0  | 1  | 1 | 1 | 0 | 0 |
+| 2 | 0  | 1  | 2  | 3 | 2 | 1 | 0 |
+| 3 | 1  | 3  | 6  | 7 | 6 | 3 | 1 |
+
+WIP
+```C
+int dynamic_trinomial(const int n, const int k) {
+  const int offset = n;
+
+  int matrix[n + 1][(2 * n) + 1];
+  for (int i = 0; i <= n; i++) {
+    for (int j = -n; j <= n; j++) {
+      if (abs(j) == i) {
+        matrix[i][offset + j] = 1;
+      } else if (abs(j) > i) {
+        matrix[i][offset + j] = 0;
+      } else {
+        matrix[i][offset + j] = matrix[i - 1][offset + j - 1] +
+                                matrix[i - 1][offset + j] +
+                                matrix[i - 1][offset + j + 1];
+      }
+    }
+  }
+  return matrix[n][offset + k];
+}
+```
