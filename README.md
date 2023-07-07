@@ -50,17 +50,6 @@ The concept could be visualized as follows:
 |-------|-------|-------------|-------------|-------------|----------|
 | 0     | 1     | $F_0+F_1$   | $F_1+F_2$   | $F_2+F_3$   | $F_3+F_4$|
 
-```mermaid
-graph LR;
-  F0-->F2;
-  F1-->F2;
-  F1-->F3;
-  F2-->F3;
-  F2-->F4;
-  F3-->F4;
-  F3-->F5;
-  F4-->F5;
-```
 This way we don't need to calculate a subproblem multiple times. The code for a primitive
 calculation storing all calculated values could like as follows.
 ```C
