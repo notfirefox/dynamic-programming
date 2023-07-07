@@ -6,10 +6,10 @@
 #include "trinomial.h"
 
 int main(int argc, const char *argv[]) {
-  int result = binomial(5, 3);
+  int result = trinomial(3, 0);
   printf("%d\n", result);
 
-  int result2 = dynamic_binomial(5, 3);
+  int result2 = dynamic_trinomial(3, 0);
   printf("%d\n", result2);
 
   return 0;
