@@ -69,7 +69,19 @@ int fibonacci_array(const int n) {
 At this point there is one more optimization that could me made regarding
 its memory usage. In order to calculate $F_n$ we only need to store $F_{n-1}$
 and $F_{n-2}$. So we do not to store the whole sequence of fibonacci numbers
-inside of an array.
+inside of an array. So the final form would like this:
+```C
+int dynamic_fibonacci(const int n) {
+  int x = 0;
+  int y = 1;
+  for (int i = 0; i < n; i++) {
+    const int t = y;
+    y += x;
+    x = t;
+  }
+  return x;
+}
+```
 
 WIP
 
