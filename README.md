@@ -157,12 +157,13 @@ int dynamic_binomial(const int n, const int k) {
 ```
 
 ## Trinomial Coefficients
-WIP
+The trinomial coefficients can be calculated using the below function with 
+$\binom{n}{k}_2=1$ if $|k|=n$ and $\binom{n}{k}_2=0$ if $|k|>n$.
 ```math
 \binom{n}{k}_2 = \binom{n-1}{k-1}_2 + \binom{n-1}{k}_2 + \binom{n-1}{k+1}_2
 ```
 
-WIP
+Again the recursive code can be easily obtained from the mathematical formula.
 ```C
 int trinomial(const int n, const int k) {
   if (abs(k) == n) {
@@ -175,7 +176,11 @@ int trinomial(const int n, const int k) {
 }
 ```
 
-WIP
+This time we are going to skip the graph and we are looking straight
+onto the matrix calculating the values. The matrix can be easily filled
+by going row by row and column by column over it and applying the
+aforementioned rules.
+
 | $n\textbackslash k$ | $-3$ | $-2$ | $-1$ | $0$ | $1$ | $2$ | $3$ |
 |---------------------|------|------|------|-----|-----|-----|-----|
 |  $0$                | $0$  | $0$  | $0$  | $1$ | $0$ | $0$ | $0$ |
@@ -183,7 +188,7 @@ WIP
 |  $2$                | $0$  | $1$  | $2$  | $3$ | $2$ | $1$ | $0$ |
 |  $3$                | $1$  | $3$  | $6$  | $7$ | $6$ | $3$ | $1$ |
 
-WIP
+An example of how that could be done using code is shown here.
 ```C
 int dynamic_trinomial(const int n, const int k) {
   const int offset = n;
