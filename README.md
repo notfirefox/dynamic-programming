@@ -49,7 +49,7 @@ $F_1$ and then $F_2$. The concept could be visualized as follows:
 
 | **Index**  | $0$ | $1$ | $2$     | $3$       | $4$     | $5$     |
 |------------|-----|-----|---------|-----------|---------|---------|
-| **Result** | 0   | 1   | $0+1=1$ | $1+1=2$   | $1+2=3$ | $2+3=5$ |
+| **Result** | $0$ | $1$ | $0+1=1$ | $1+1=2$   | $1+2=3$ | $2+3=5$ |
 
 This way we don't need to calculate a subproblem multiple times. 
 The code for a primitive calculation storing all calculated values 
@@ -100,6 +100,7 @@ int binomial(const int n, const int k) {
 }
 ```
 
+The above recursive code can again be visualized using a graph.
 ```mermaid
 graph TD;
     5C3(5C3);
@@ -109,6 +110,10 @@ graph TD;
     5C3_4C2-->5C3_4C2_2C1(2C1);
     5C3_4C3-->5C3_4C3_3C2(3C2);
     5C3_4C3-->5C3_4C3_3C3(3C3);
+    5C3_4C2_3C1-->5C3_4C2_3C1_2C0(2C0);
+    5C3_4C2_3C1-->5C3_4C2_3C1_2C1(2C1);
+    5C3_4C2_3C1_2C1-->5C3_4C2_3C1_2C1_1C0(1C0);
+    5C3_4C2_3C1_2C1-->5C3_4C2_3C1_2C1_1C1(1C1);
 ```
 
 Applying the learnings from above we can calculate the binomial coefficients
