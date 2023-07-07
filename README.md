@@ -82,8 +82,11 @@ int dynamic_fibonacci(const int n) {
   return x;
 }
 ```
-
-WIP
+The fastest way to calculate $F_n$ however is using the following formula:
+```math
+F_n = \frac{1}{\sqrt{5}} \cdot 
+\bigg((\frac{1+\sqrt{5}}{2})^n-(\frac{1+\sqrt{5}}{2})^n\bigg)
+```
 
 ## Binomial Coefficients
 WIP
