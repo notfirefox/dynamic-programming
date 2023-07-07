@@ -11,9 +11,9 @@ int binomial(const int n, const int k) {
 }
 
 int dynamic_binomial(const int n, const int k) {
-  int matrix[n][k + 1];
+  int matrix[n + 1][k + 1];
 
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i <= n; i++) {
     for (int j = 0; j <= k; j++) {
       if (i == j || j == 0) {
         matrix[i][j] = 1;
@@ -23,5 +23,5 @@ int dynamic_binomial(const int n, const int k) {
     }
   }
 
-  return matrix[n - 1][k - 1] + matrix[n - 1][k];
+  return matrix[n][k];
 }
