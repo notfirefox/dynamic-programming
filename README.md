@@ -100,6 +100,16 @@ int binomial(const int n, const int k) {
 }
 ```
 
+```mermaid
+graph TD;
+    5C3-->5C3_4C2(4C2);
+    5C3-->5C3_4C3(4C3);
+    5C3_4C2-_>5C3_4C2_3C1(3C1);
+    5C3_4C2-->5C3_4C2_2C1(2C1);
+    5C3_4C3-->5C3_4C3_3C2(3C2);
+    5C3_4C3-->5C3_4C3_3C3(3C3);
+```
+
 Applying the learnings from above we can calculate the binomial coefficients
 using a matrix:
 | $0$ | $1$ | $2$ | $3$ | **$k / n$** |
