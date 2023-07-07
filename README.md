@@ -50,7 +50,6 @@ $F_1$ and then $F_2$. The concept could be visualized as follows:
 | **Index**  | $0$ | $1$ | $2$     | $3$       | $4$     | $5$     |
 |------------|-----|-----|---------|-----------|---------|---------|
 | **Result** | 0   | 1   | $0+1=1$ | $1+1=2$   | $1+2=3$ | $2+3=5$ |
-|------------|-----|-----|---------|-----------|---------|---------|
 
 This way we don't need to calculate a subproblem multiple times. 
 The code for a primitive calculation storing all calculated values 
@@ -105,14 +104,13 @@ Applying the learnings from above we can calculate the binomial coefficients
 using a matrix:
 | 0 | 1 | 2 | 3 | k/n |
 |---|---|---|---|-----|
-| 1 |   |   |   |     |
+| 1 |   |   |   |  0  |
 |---|---|---|---|-----|
-| 1 | 1 |   |   |     |
+| 1 | 1 |   |   |  1  |
 |---|---|---|---|-----|
-| 1 | 2 | 1 |   |     |
+| 1 | 2 | 1 |   |  2  |
 |---|---|---|---|-----|
-| 1 | 3 | 3 | 1 |     |
-|---|---|---|---|-----|
+| 1 | 3 | 3 | 1 |  3  |
 
 The code for populating the matrix would look as follows.
 ```C
