@@ -1,16 +1,27 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "binomial.h"
 #include "fibonacci.h"
 #include "function.h"
+#include "lcs.h"
 #include "trinomial.h"
 
 int main(int argc, const char *argv[]) {
-  int result = trinomial(3, 0);
-  printf("%d\n", result);
+  const char *const x = "TGCGTCCAT";
+  const char *const y = "TACGTGCGCT";
+  const int i = strlen(x);
+  const int j = strlen(y);
 
-  int result2 = dynamic_trinomial(3, 0);
-  printf("%d\n", result2);
+  int length1 = lcslen(x, y, i, j);
+  printf("%d\n", length1);
+
+  char b[i + 1][j + 1];
+  int length2 = dynamic_lcslen(x, y, i, j, b);
+  printf("%d\n", length2);
+  print_lcs(i, j, i, j, b, x);
+  printf("\n");
 
   return 0;
 }
