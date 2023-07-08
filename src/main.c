@@ -23,16 +23,9 @@ int main(int argc, const char *argv[]) {
   print_lcs(i, j, i, j, b, x);
   printf("\n");
 
-  int *result_index = malloc(sizeof(int));
-  if (!result_index) {
-    return 1;
-  } else {
-    *result_index = 0;
-  }
   char result[length2];
-  _find_lcs(i, j, i, j, length2, result, result_index, b, x);
+  find_lcs(i, j, length2, result, b, x);
   printf("%s\n", result);
-  free(result_index);
 
   return 0;
 }

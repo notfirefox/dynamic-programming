@@ -1,6 +1,7 @@
 #include "lcs.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 static int max(const int x, const int y) { return x >= y ? x : y; }
 
@@ -43,9 +44,9 @@ int dynamic_lcslen(const char x[], const char y[], const int m, const int n,
   return c[m][n];
 }
 
-void _find_lcs(const int m, const int n, const int i, const int j, const int l,
-               char result[l], int *result_index, const char b[m + 1][n + 1],
-               const char x[m]) {
+static void _find_lcs(const int m, const int n, const int i, const int j,
+                      const int l, char result[l], int *result_index,
+                      const char b[m + 1][n + 1], const char x[m]) {
   if (i == 0 || j == 0) {
     return;
   }
@@ -59,17 +60,15 @@ void _find_lcs(const int m, const int n, const int i, const int j, const int l,
   }
 }
 
-void print_lcs(const int m, const int n, const int i, const int j,
-               char b[m + 1][n + 1], const char x[m]) {
-  if (i == 0 || j == 0) {
+void find_lcs(const int m, const int n, const char l, char result[l],
+              const char b[m + 1][n + 1], const char x[m]) {
+  int *result_index = malloc(sizeof(int));
+  if (result_index == NULL) {
+    printf("Memory allocation failed.");
+    exit(EXIT_FAILURE);
     return;
   }
-  if (b[i][j] == 'Q') {
-    print_lcs(m, n, i - 1, j - 1, b, x);
-    printf("%c", x[i - 1]);
-  } else if (b[i][j] == 'W') {
-    print_lcs(m, n, i - 1, j, b, x);
-  } else if (b[i][j] == 'A') {
-    print_lcs(m, n, i, j - 1, b, x);
-  }
+  *result_index = 0;
+  _find_lcs(m, n, m, n, l, result, result_index, b, x);
+  free(result_index);
 }
