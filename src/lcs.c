@@ -15,28 +15,6 @@ int lcslen(const char x[], const char y[], const int i, const int j) {
 
 /* Dynamic */
 
-/*
-void print_matrix(const int m, const int n, const char matrix[m + 1][n + 1]) {
-  for (int i = 0; i <= m; i++) {
-    for (int j = 0; j <= n; j++) {
-      char c = matrix[i][j];
-      if (c == 'A') {
-        printf("- ");
-      } else if (c == 'W') {
-        printf("| ");
-      } else if (c == 'Q') {
-        printf("\\ ");
-      } else if (i == 0 || j == 0) {
-        printf("0 ");
-      } else {
-        printf("? ");
-      }
-    }
-    printf("\n");
-  }
-}
-*/
-
 void print_lcs(const int m, const int n, const int i, const int j,
                char b[m + 1][n + 1], const char x[m]) {
   if (i == 0 || j == 0) {
@@ -54,7 +32,6 @@ void print_lcs(const int m, const int n, const int i, const int j,
 
 int dynamic_lcslen(const char x[], const char y[], const int m, const int n,
                    char b[m + 1][n + 1]) {
-  // char b[m + 1][n + 1];
   int c[m + 1][n + 1];
 
   for (int i = 0; i <= m; i++) {
