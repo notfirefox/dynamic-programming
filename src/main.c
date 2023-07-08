@@ -20,8 +20,6 @@ int main(int argc, const char *argv[]) {
   char b[i + 1][j + 1];
   int length2 = dynamic_lcslen(x, y, i, j, b);
   printf("%d\n", length1);
-  print_lcs(i, j, i, j, b, x);
-  printf("\n");
 
   char result[length2];
   find_lcs(i, j, length2, result, b, x);

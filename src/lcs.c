@@ -45,18 +45,18 @@ int dynamic_lcslen(const char x[], const char y[], const int m, const int n,
 }
 
 static void _find_lcs(const int m, const int n, const int i, const int j,
-                      const int l, char result[l], int *result_index,
+                      const int l, char result[l], int *index,
                       const char b[m + 1][n + 1], const char x[m]) {
   if (i == 0 || j == 0) {
     return;
   }
   if (b[i][j] == 'Q') {
-    _find_lcs(m, n, i - 1, j - 1, l, result, result_index, b, x);
-    result[(*result_index)++] = x[i - 1];
+    _find_lcs(m, n, i - 1, j - 1, l, result, index, b, x);
+    result[(*index)++] = x[i - 1];
   } else if (b[i][j] == 'W') {
-    _find_lcs(m, n, i - 1, j, l, result, result_index, b, x);
+    _find_lcs(m, n, i - 1, j, l, result, index, b, x);
   } else if (b[i][j] == 'A') {
-    _find_lcs(m, n, i, j - 1, l, result, result_index, b, x);
+    _find_lcs(m, n, i, j - 1, l, result, index, b, x);
   }
 }
 
