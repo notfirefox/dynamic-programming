@@ -13,23 +13,6 @@ int lcslen(const char x[], const char y[], const int i, const int j) {
   return max(lcslen(x, y, i - 1, j), lcslen(x, y, i, j - 1));
 }
 
-/* Dynamic */
-
-void print_lcs(const int m, const int n, const int i, const int j,
-               char b[m + 1][n + 1], const char x[m]) {
-  if (i == 0 || j == 0) {
-    return;
-  }
-  if (b[i][j] == 'Q') {
-    print_lcs(m, n, i - 1, j - 1, b, x);
-    printf("%c", x[i - 1]);
-  } else if (b[i][j] == 'W') {
-    print_lcs(m, n, i - 1, j, b, x);
-  } else if (b[i][j] == 'A') {
-    print_lcs(m, n, i, j - 1, b, x);
-  }
-}
-
 int dynamic_lcslen(const char x[], const char y[], const int m, const int n,
                    char b[m + 1][n + 1]) {
   int c[m + 1][n + 1];
@@ -58,4 +41,19 @@ int dynamic_lcslen(const char x[], const char y[], const int m, const int n,
   }
 
   return c[m][n];
+}
+
+void print_lcs(const int m, const int n, const int i, const int j,
+               char b[m + 1][n + 1], const char x[m]) {
+  if (i == 0 || j == 0) {
+    return;
+  }
+  if (b[i][j] == 'Q') {
+    print_lcs(m, n, i - 1, j - 1, b, x);
+    printf("%c", x[i - 1]);
+  } else if (b[i][j] == 'W') {
+    print_lcs(m, n, i - 1, j, b, x);
+  } else if (b[i][j] == 'A') {
+    print_lcs(m, n, i, j - 1, b, x);
+  }
 }
