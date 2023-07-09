@@ -212,7 +212,7 @@ int dynamic_trinomial(const int n, const int k) {
 ```
 
 ## Longest Common Subsequence
-Given two sequences $X=(x_1,...x_i)$ and $Y=(y_1,...,y_j)$, the
+Given two sequences $X=(x_1,...x_m)$ and $Y=(y_1,...,y_n)$, the
 length of their longest common subsequence can be calculated using
 the following formula.
 ```math
@@ -224,23 +224,12 @@ max(c[i-1,j], c[i,j-1]), &\text{if $i,j>0$ and $x_i\neq y_j$}
 \end{cases}
 ```
 
-Let's say we want to calculate the length of the LCS of $X=TGCGTCCAT$
-and $Y=TACGTGCGCT$. Using the above formula we can populate the following
-matrix:
-|      | $y_j$ | $T$ | $A$ | $C$ | $G$ | $T$ | $G$ | $C$ | $G$ | $C$ | $T$ |
-|------|-------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| $x_i$| $0$   | $0$ | $0$ | $0$ | $0$ | $0$ | $0$ | $0$ | $0$ | $0$ | $0$ |
-| $T$  | $0$   | $1$ | $1$ | $1$ | $1$ | $1$ | $1$ | $1$ | $1$ | $1$ | $1$ |
-| $G$  | $0$   | $1$ | $1$ | $1$ | $2$ | $2$ | $2$ | $2$ | $2$ | $2$ | $2$ |
-| $C$  | $0$   | $1$ | $1$ | $2$ | $2$ | $2$ | $3$ | $3$ | $3$ | $3$ | $3$ |
-| $G$  | $0$   | $1$ | $1$ | $2$ | $3$ | $3$ | $4$ | $3$ | $4$ | $4$ | $4$ |
-| $T$  | $0$   | $1$ | $1$ | $2$ | $3$ | $4$ | $4$ | $4$ | $4$ | $4$ | $5$ |
-| $C$  | $0$   | $1$ | $1$ | $2$ | $3$ | $4$ | $4$ | $5$ | $5$ | $5$ | $5$ |
-| $C$  | $0$   | $1$ | $1$ | $2$ | $3$ | $4$ | $4$ | $5$ | $5$ | $6$ | $6$ |
-| $A$  | $0$   | $1$ | $2$ | $2$ | $3$ | $4$ | $4$ | $5$ | $5$ | $6$ | $6$ |
-| $T$  | $0$   | $1$ | $2$ | $2$ | $3$ | $4$ | $4$ | $5$ | $5$ | $6$ | $7$ |
+Using the above formula we can successively populate a matrix.
+| $c[i-1,j-1]$ | $c[i-1,j]$ |
+|--------------|------------|
+| $c[i,j-1]$   | $c[i,j]$   |
 
-A matrix as shown above could be populated using the below code.
+The code for calculating the length of the LCS could look something like this.
 ```C
 int dynamic_lcslen(const char x[], const char y[]) {
   const int m = strlen(x);
