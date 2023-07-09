@@ -218,7 +218,7 @@ c[i,j]=
 \begin{cases}
 0,                       &\text{if $i=0$ or $j=0$}\\
 c[i-1,j-1]+1,            &\text{if $i,j>0$ and $x_i=y_j$}\\
-max(c[i-1,j], c[i,j-1]), &\text{if $i,j>0$ and $x_i\neq x_j$}
+\max(c[i-1,j], c[i,j-1]), &\text{if $i,j>0$ and $x_i\neq x_j$}
 \end{cases}
 ```
 
