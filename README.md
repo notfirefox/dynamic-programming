@@ -1,10 +1,5 @@
 # Dynamic Programming
 
-## Chapters
-- Fibonacci
-- Binomial Coefficients
-- Trinomial Coefficients
-
 ## Fibonacci
 The Fibonacci number $F_n$ can be calculated using 
 the following formula where $F_0=0$ and $F_1=1$.
