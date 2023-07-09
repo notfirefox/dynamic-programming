@@ -212,7 +212,9 @@ int dynamic_trinomial(const int n, const int k) {
 ```
 
 ## Longest Common Subsequence
-WIP
+Given two sequences $X=(x_1,...x_i)$ and $Y=(y_1,...,y_j)$, the
+length of their longest common subsequence can be calculated using
+the following formula.
 ```math
 c[i,j]=
 \begin{cases}

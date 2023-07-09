@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 static int max(const int x, const int y) { return x >= y ? x : y; }
 
