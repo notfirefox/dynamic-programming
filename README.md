@@ -236,8 +236,7 @@ int lcslen(const char x[], const char y[], const int i, const int j) {
 
 WIP
 ```C
-int dynamic_lcslen(const char x[], const char y[], const int m, const int n,
-                   char b[m + 1][n + 1]) {
+int dynamic_lcslen(const char x[], const char y[], const int m, const int n) {
   int c[m + 1][n + 1];
 
   for (int i = 0; i <= m; i++) {
@@ -252,13 +251,10 @@ int dynamic_lcslen(const char x[], const char y[], const int m, const int n,
     for (int j = 1; j <= n; j++) {
       if (x[i - 1] == y[j - 1]) {
         c[i][j] = c[i - 1][j - 1] + 1;
-        b[i][j] = 'Q';
       } else if (c[i - 1][j] >= c[i][j - 1]) {
         c[i][j] = c[i - 1][j];
-        b[i][j] = 'W';
       } else {
         c[i][j] = c[i][j - 1];
-        b[i][j] = 'A';
       }
     }
   }
