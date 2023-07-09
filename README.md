@@ -224,19 +224,23 @@ max(c[i-1,j], c[i,j-1]), &\text{if $i,j>0$ and $x_i\neq y_j$}
 \end{cases}
 ```
 
-WIP
-```C
-int lcslen(const char x[], const char y[], const int i, const int j) {
-  if (i == 0 || j == 0) {
-    return 0;
-  } else if (x[i] == y[j]) {
-    return lcslen(x, y, i - 1, j - 1) + 1;
-  }
-  return max(lcslen(x, y, i - 1, j), lcslen(x, y, i, j - 1));
-}
-```
+Let's say we want to calculate the length of the LCS of $X=TGCGTCCAT$
+and $Y=TACGTGCGCT$. Using the above formula we can populate the following
+matrix:
+|      | $y_j$ | $T$ | $A$ | $C$ | $G$ | $T$ | $G$ | $C$ | $G$ | $C$ | $T$ |
+|------|-------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| $x_i$| $0$   | $0$ | $0$ | $0$ | $0$ | $0$ | $0$ | $0$ | $0$ | $0$ | $0$ |
+| $T$  | $0$   | $1$ | $1$ | $1$ | $1$ | $1$ | $1$ | $1$ | $1$ | $1$ | $1$ |
+| $G$  | $0$   | $1$ | $1$ | $1$ | $2$ | $2$ | $2$ | $2$ | $2$ | $2$ | $2$ |
+| $C$  | $0$   | $1$ | $1$ | $2$ | $2$ | $2$ | $3$ | $3$ | $3$ | $3$ | $3$ |
+| $G$  | $0$   | $1$ | $1$ | $2$ | $3$ | $3$ | $4$ | $3$ | $4$ | $4$ | $4$ |
+| $T$  | $0$   | $1$ | $1$ | $2$ | $3$ | $4$ | $4$ | $4$ | $4$ | $4$ | $5$ |
+| $C$  | $0$   | $1$ | $1$ | $2$ | $3$ | $4$ | $4$ | $5$ | $5$ | $5$ | $5$ |
+| $C$  | $0$   | $1$ | $1$ | $2$ | $3$ | $4$ | $4$ | $5$ | $5$ | $6$ | $6$ |
+| $A$  | $0$   | $1$ | $2$ | $2$ | $3$ | $4$ | $4$ | $5$ | $5$ | $6$ | $6$ |
+| $T$  | $0$   | $1$ | $2$ | $2$ | $3$ | $4$ | $4$ | $5$ | $5$ | $6$ | $7$ |
 
-WIP
+A matrix as shown above could be populated using the below code.
 ```C
 int dynamic_lcslen(const char x[], const char y[]) {
   const int m = strlen(x);
