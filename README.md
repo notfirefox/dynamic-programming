@@ -152,7 +152,7 @@ int binomial_matrix(const int n, const int k) {
 }
 ```
 Now there is one more thing to consider. In order to calculate a row
-$R_x$ with $x\in\mathbb{N}^+$ we only need $R_{x-1}$. So in total
+$R_x$ with $x > 0$ we only need $R_{x-1}$. So in total
 we only need one row $R_x$ to store the current values and one row
 $R_{x-1}$ to access the previously calculated values.
 
