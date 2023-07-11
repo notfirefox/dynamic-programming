@@ -23,8 +23,8 @@ int dynamic_trinomial(const int n, const int k) {
       } else if (j > i) {
         matrix[i][j] = 0;
       } else {
-        matrix[i][j] = matrix[i - 1][abs(j - 1)] + matrix[i - 1][abs(j)] +
-                       matrix[i - 1][abs(j + 1)];
+        matrix[i][j] =
+            matrix[i - 1][abs(j - 1)] + matrix[i - 1][j] + matrix[i - 1][j + 1];
       }
     }
   }
