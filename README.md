@@ -155,6 +155,11 @@ Now there is one more thing to consider. In order to calculate a row
 $R_x$ with $x > 0$ we only need $R_{x-1}$. So in total
 we only need one row $R_x$ to store the current values and one row
 $R_{x-1}$ to access the previously calculated values.
+```C
+int dynamic_binomial(const int n, const int k) {
+  // TODO
+}
+```
 
 ## Trinomial Coefficients
 The trinomial coefficients can be calculated using the below function with 
