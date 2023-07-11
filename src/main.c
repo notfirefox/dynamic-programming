@@ -12,9 +12,9 @@ int main(int argc, const char *argv[]) {
   const int n = 5;
   const int k = 3;
 
-  const int x = binomial(n, k);
-  const int y = binomial_matrix(n, k);
-  const int z = dynamic_binomial(n, k);
+  const int x = trinomial(n, k);
+  const int y = trinomial_matrix(n, k);
+  const int z = dynamic_trinomial(n, k);
 
   printf("%d\n", x);
   printf("%d\n", y);
