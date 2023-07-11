@@ -9,9 +9,12 @@
 #include "trinomial.h"
 
 int main(int argc, const char *argv[]) {
-  int x = binomial(5, 3);
-  int y = binomial_matrix(5, 3);
-  int z = dynamic_binomial(5, 3);
+  const int n = 5;
+  const int k = 3;
+
+  const int x = binomial(n, k);
+  const int y = binomial_matrix(n, k);
+  const int z = dynamic_binomial(n, k);
 
   printf("%d\n", x);
   printf("%d\n", y);
