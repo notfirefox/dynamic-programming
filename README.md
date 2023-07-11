@@ -157,7 +157,25 @@ we only need one row $R_x$ to store the current values and one row
 $R_{x-1}$ to access the previously calculated values.
 ```C
 int dynamic_binomial(const int n, const int k) {
-  // TODO
+  int array_1[k + 1];
+  int array_2[k + 1];
+
+  int *current = array_1;
+  int *previous = array_2;
+  for (int i = 0; i <= n; i++) {
+    current = (current == array_1) ? array_2 : array_1;
+    previous = (previous == array_1) ? array_2 : array_1;
+
+    for (int j = 0; j <= i; j++) {
+      if (i == j || j == 0) {
+        current[j] = 1;
+      } else {
+        current[j] = previous[j - 1] + previous[j];
+      }
+    }
+  }
+
+  return current[k];
 }
 ```
 
