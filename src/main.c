@@ -9,6 +9,12 @@
 #include "trinomial.h"
 
 int main(int argc, const char *argv[]) {
+  int x = trinomial(5, 2);
+  int y = dynamic_trinomial(5, 2);
+
+  printf("%d\n", x);
+  printf("%d\n", y);
+  /*
   const char *const x = "TGCGTCCAT";
   const char *const y = "TACGTGCGCT";
   const int i = strlen(x);
@@ -24,6 +30,7 @@ int main(int argc, const char *argv[]) {
   char result[length2];
   find_lcs(i, j, length2, result, b, x);
   printf("%s\n", result);
+  */
 
   return 0;
 }
