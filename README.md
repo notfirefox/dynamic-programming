@@ -134,7 +134,7 @@ using a matrix:
 
 The code for populating the matrix would look as follows.
 ```C
-int dynamic_binomial(const int n, const int k) {
+int binomial_matrix(const int n, const int k) {
   int matrix[n + 1][n + 1];
 
   for (int i = 0; i <= n; i++) {
@@ -193,7 +193,7 @@ Effectively you only need this half of the matrix:
 
 An example of how that could be done using code is shown below.
 ```C
-int dynamic_trinomial(const int n, const int k) {
+int trinomial_matrix(const int n, const int k) {
   int matrix[n + 1][n + 1];
 
   for (int i = 0; i <= n; i++) {

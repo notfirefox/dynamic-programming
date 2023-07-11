@@ -13,7 +13,7 @@ int trinomial(const int n, const int k) {
          trinomial(n - 1, k + 1);
 }
 
-int dynamic_trinomial(const int n, const int k) {
+int trinomial_matrix(const int n, const int k) {
   int matrix[n + 1][n + 1];
 
   for (int i = 0; i <= n; i++) {

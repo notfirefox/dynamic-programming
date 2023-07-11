@@ -10,7 +10,7 @@
 
 int main(int argc, const char *argv[]) {
   int x = trinomial(5, 2);
-  int y = dynamic_trinomial(5, 2);
+  int y = trinomial_matrix(5, 2);
 
   printf("%d\n", x);
   printf("%d\n", y);

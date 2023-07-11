@@ -10,7 +10,7 @@ int binomial(const int n, const int k) {
   return binomial(n - 1, k - 1) + binomial(n - 1, k);
 }
 
-int dynamic_binomial(const int n, const int k) {
+int binomial_matrix(const int n, const int k) {
   int matrix[n + 1][n + 1];
 
   for (int i = 0; i <= n; i++) {
