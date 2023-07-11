@@ -11,9 +11,11 @@
 int main(int argc, const char *argv[]) {
   int x = binomial(5, 3);
   int y = binomial_matrix(5, 3);
+  int z = dynamic_binomial(5, 3);
 
   printf("%d\n", x);
   printf("%d\n", y);
+  printf("%d\n", z);
   /*
   const char *const x = "TGCGTCCAT";
   const char *const y = "TACGTGCGCT";
