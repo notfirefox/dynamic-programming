@@ -124,19 +124,19 @@ graph TD;
 Applying the learnings from above we can calculate the binomial coefficients
 using a matrix:
 
-| **$n \textbackslash k$** | $0$ | $1$ | $2$  | $3$  | $4$ | $5$ |
-|:------------------------:|-----|-----|------|------|-----|-----|
-| $0$                      | $1$ |     |      |      |     |     |
-| $1$                      | $1$ | $1$ |      |      |     |     |
-| $2$                      | $1$ | $2$ | $1$  |      |     |     |
-| $3$                      | $1$ | $3$ | $3$  | $1$  |     |     |
-| $4$                      | $1$ | $4$ | $6$  | $4$  | $1$ |     |
-| $5$                      | $1$ | $5$ | $10$ | $10$ | $5$ | $1$ |
+| **$n \textbackslash k$** | $0$ | $1$ | $2$  | $3$  |
+|:------------------------:|-----|-----|------|------|
+| $0$                      | $1$ |     |      |      |
+| $1$                      | $1$ | $1$ |      |      |
+| $2$                      | $1$ | $2$ | $1$  |      |
+| $3$                      | $1$ | $3$ | $3$  | $1$  |
+| $4$                      | $1$ | $4$ | $6$  | $4$  |
+| $5$                      | $1$ | $5$ | $10$ | $10$ |
 
 The code for populating the matrix would look as follows.
 ```C
 int binomial_matrix(const int n, const int k) {
-  int matrix[n + 1][n + 1];
+  int matrix[n + 1][k + 1];
 
   for (int i = 0; i <= n; i++) {
     for (int j = 0; j <= i; j++) {

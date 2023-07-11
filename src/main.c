@@ -9,8 +9,8 @@
 #include "trinomial.h"
 
 int main(int argc, const char *argv[]) {
-  int x = trinomial(5, 2);
-  int y = trinomial_matrix(5, 2);
+  int x = binomial(5, 3);
+  int y = binomial_matrix(5, 3);
 
   printf("%d\n", x);
   printf("%d\n", y);
