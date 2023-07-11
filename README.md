@@ -183,6 +183,14 @@ aforementioned rules.
 |  $2$                | $0$  | $1$  | $2$  | $3$ | $2$ | $1$ | $0$ |
 |  $3$                | $1$  | $3$  | $6$  | $7$ | $6$ | $3$ | $1$ |
 
+Effectively you only need this half of the matrix:
+| $n\textbackslash k$ | $0$ | $1$ | $2$ | $3$ |
+|---------------------|-----|-----|-----|-----|
+|  $0$                | $1$ | $0$ | $0$ | $0$ |
+|  $1$                | $1$ | $1$ | $0$ | $0$ |
+|  $2$                | $3$ | $2$ | $1$ | $0$ |
+|  $3$                | $7$ | $6$ | $3$ | $1$ |
+
 An example of how that could be done using code is shown below.
 ```C
 int dynamic_trinomial(const int n, const int k) {
