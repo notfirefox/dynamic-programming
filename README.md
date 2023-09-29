@@ -9,10 +9,10 @@ F_n = F_{n-1} + F_{n-2}
 This can be directly translated into the following C code using recursion:
 ```C
 int fibonacci(const int n) {
-  if (n == 0 || n == 1) {
-    return n;
-  }
-  return fibonacci(n - 1) + fibonacci(n - 2);
+	if (n == 0 || n == 1) {
+		return n;
+	}
+	return fibonacci(n - 1) + fibonacci(n - 2);
 }
 ```
 The code is easily comprehensible, but the runtime of it is rather poor.
@@ -51,14 +51,14 @@ The code for a primitive calculation storing all calculated values
 could like as follows.
 ```C
 int fibonacci_array(const int n) {
-  int array[n];
-  array[0] = 0;
-  array[1] = 1;
+	int array[n];
+	array[0] = 0;
+	array[1] = 1;
 
-  for (int i = 2; i <= n; i++) {
-    array[i] = array[i - 1] + array[i - 2];
-  }
-  return array[n];
+	for (int i = 2; i <= n; i++) {
+		array[i] = array[i - 1] + array[i - 2];
+	}
+	return array[n];
 }
 ```
 At this point there is one more optimization that could me made regarding
@@ -67,14 +67,14 @@ and $F_{n-2}$. So we do not to store the whole sequence of fibonacci numbers
 inside of an array. So the final form would like this:
 ```C
 int dynamic_fibonacci(const int n) {
-  int x = 0;
-  int y = 1;
-  for (int i = 0; i < n; i++) {
-    const int t = y;
-    y += x;
-    x = t;
-  }
-  return x;
+	int x = 0;
+	int y = 1;
+	for (int i = 0; i < n; i++) {
+		const int t = y;
+		y += x;
+		x = t;
+	}
+	return x;
 }
 ```
 
@@ -88,10 +88,10 @@ where $\binom{n}{0}=1$ and $\binom{n}{n}=1$.
 The naive approach would be using recursion:
 ```C
 int binomial(const int n, const int k) {
-  if (n == k || k == 0) {
-    return 1;
-  }
-  return binomial(n - 1, k - 1) + binomial(n - 1, k);
+	if (n == k || k == 0) {
+		return 1;
+	}
+	return binomial(n - 1, k - 1) + binomial(n - 1, k);
 }
 ```
 
@@ -136,19 +136,19 @@ using a matrix:
 The code for populating the matrix would look as follows.
 ```C
 int binomial_matrix(const int n, const int k) {
-  int matrix[n + 1][k + 1];
+	int matrix[n + 1][k + 1];
 
-  for (int i = 0; i <= n; i++) {
-    for (int j = 0; j <= k; j++) {
-      if (i == j || j == 0) {
-        matrix[i][j] = 1;
-      } else {
-        matrix[i][j] = matrix[i - 1][j - 1] + matrix[i - 1][j];
-      }
-    }
-  }
+	for (int i = 0; i <= n; i++) {
+		for (int j = 0; j <= k; j++) {
+			if (i == j || j == 0) {
+				matrix[i][j] = 1;
+			} else {
+				matrix[i][j] = matrix[i - 1][j - 1] + matrix[i - 1][j];
+			}
+		}
+	}
 
-  return matrix[n][k];
+	return matrix[n][k];
 }
 ```
 Now there is one more thing to consider. In order to calculate a row
@@ -157,25 +157,25 @@ we only need one row $R_x$ to store the current values and one row
 $R_{x-1}$ to access the previously calculated values.
 ```C
 int dynamic_binomial(const int n, const int k) {
-  int array_1[k + 1];
-  int array_2[k + 1];
+	int array_1[k + 1];
+	int array_2[k + 1];
 
-  int *current = array_1;
-  int *previous = array_2;
-  for (int i = 0; i <= n; i++) {
-    current = (current == array_1) ? array_2 : array_1;
-    previous = (previous == array_1) ? array_2 : array_1;
+	int *current = array_1;
+	int *previous = array_2;
+	for (int i = 0; i <= n; i++) {
+		current = (current == array_1) ? array_2 : array_1;
+		previous = (previous == array_1) ? array_2 : array_1;
 
-    for (int j = 0; j <= i; j++) {
-      if (i == j || j == 0) {
-        current[j] = 1;
-      } else {
-        current[j] = previous[j - 1] + previous[j];
-      }
-    }
-  }
+		for (int j = 0; j <= i; j++) {
+			if (i == j || j == 0) {
+				current[j] = 1;
+			} else {
+				current[j] = previous[j - 1] + previous[j];
+			}
+		}
+	}
 
-  return current[k];
+	return current[k];
 }
 ```
 
@@ -189,13 +189,13 @@ $\binom{n}{k}_2=1$ if $|k|=n$ and $\binom{n}{k}_2=0$ if $|k|>n$.
 Again the recursive code can be easily obtained from the mathematical formula.
 ```C
 int trinomial(const int n, const int k) {
-  if (abs(k) == n) {
-    return 1;
-  } else if (abs(k) > n) {
-    return 0;
-  }
-  return trinomial(n - 1, k - 1) + trinomial(n - 1, k) +
-         trinomial(n - 1, k + 1);
+	if (abs(k) == n) {
+		return 1;
+	} else if (abs(k) > n) {
+		return 0;
+	}
+	return trinomial(n - 1, k - 1) + trinomial(n - 1, k) +
+				 trinomial(n - 1, k + 1);
 }
 ```
 
@@ -222,49 +222,49 @@ Effectively you only need this half of the matrix:
 An example of how that could be done using code is shown below.
 ```C
 int trinomial_matrix(const int n, const int k) {
-  int matrix[n + 1][n + 1];
+	int matrix[n + 1][n + 1];
 
-  for (int i = 0; i <= n; i++) {
-    for (int j = 0; j <= n; j++) {
-      if (i == j) {
-        matrix[i][j] = 1;
-      } else if (j > i) {
-        matrix[i][j] = 0;
-      } else {
-        matrix[i][j] =
-            matrix[i - 1][abs(j - 1)] + matrix[i - 1][j] + matrix[i - 1][j + 1];
-      }
-    }
-  }
+	for (int i = 0; i <= n; i++) {
+		for (int j = 0; j <= n; j++) {
+			if (i == j) {
+				matrix[i][j] = 1;
+			} else if (j > i) {
+				matrix[i][j] = 0;
+			} else {
+				matrix[i][j] =
+						matrix[i - 1][abs(j - 1)] + matrix[i - 1][j] + matrix[i - 1][j + 1];
+			}
+		}
+	}
 
-  return matrix[n][k];
+	return matrix[n][k];
 }
 ```
 
 The same memory optimizations from above can be applied here as well:
 ```C
 int dynamic_trinomial(const int n, const int k) {
-  int array_1[n + 1];
-  int array_2[n + 1];
+	int array_1[n + 1];
+	int array_2[n + 1];
 
-  int *current = array_1;
-  int *previous = array_2;
-  for (int i = 0; i <= n; i++) {
-    current = (current == array_1) ? array_2 : array_1;
-    previous = (previous == array_1) ? array_2 : array_1;
+	int *current = array_1;
+	int *previous = array_2;
+	for (int i = 0; i <= n; i++) {
+		current = (current == array_1) ? array_2 : array_1;
+		previous = (previous == array_1) ? array_2 : array_1;
 
-    for (int j = 0; j <= n; j++) {
-      if (i == j) {
-        current[j] = 1;
-      } else if (j > i) {
-        current[j] = 0;
-      } else {
-        current[j] = previous[abs(j - 1)] + previous[j] + previous[j + 1];
-      }
-    }
-  }
+		for (int j = 0; j <= n; j++) {
+			if (i == j) {
+				current[j] = 1;
+			} else if (j > i) {
+				current[j] = 0;
+			} else {
+				current[j] = previous[abs(j - 1)] + previous[j] + previous[j + 1];
+			}
+		}
+	}
 
-  return current[k];
+	return current[k];
 }
 ```
 
@@ -289,31 +289,31 @@ Using the above formula we can successively populate a matrix.
 The code for calculating the length of the LCS could look something like this.
 ```C
 int dynamic_lcslen(const char x[], const char y[]) {
-  const int m = strlen(x);
-  const int n = strlen(y);
+	const int m = strlen(x);
+	const int n = strlen(y);
 
-  int c[m + 1][n + 1];
+	int c[m + 1][n + 1];
 
-  for (int i = 0; i <= m; i++) {
-    c[i][0] = 0;
-  }
+	for (int i = 0; i <= m; i++) {
+		c[i][0] = 0;
+	}
 
-  for (int j = 0; j <= n; j++) {
-    c[0][j] = 0;
-  }
+	for (int j = 0; j <= n; j++) {
+		c[0][j] = 0;
+	}
 
-  for (int i = 1; i <= m; i++) {
-    for (int j = 1; j <= n; j++) {
-      if (x[i - 1] == y[j - 1]) {
-        c[i][j] = c[i - 1][j - 1] + 1;
-      } else if (c[i - 1][j] >= c[i][j - 1]) {
-        c[i][j] = c[i - 1][j];
-      } else {
-        c[i][j] = c[i][j - 1];
-      }
-    }
-  }
+	for (int i = 1; i <= m; i++) {
+		for (int j = 1; j <= n; j++) {
+			if (x[i - 1] == y[j - 1]) {
+				c[i][j] = c[i - 1][j - 1] + 1;
+			} else if (c[i - 1][j] >= c[i][j - 1]) {
+				c[i][j] = c[i - 1][j];
+			} else {
+				c[i][j] = c[i][j - 1];
+			}
+		}
+	}
 
-  return c[m][n];
+	return c[m][n];
 }
 ```
