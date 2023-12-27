@@ -1,5 +1,4 @@
 # Dynamic Programming
-**TODO:** Use pseudo code in readme file instead of C code.
 
 ## Fibonacci
 The Fibonacci number $F_n$ can be calculated using 
