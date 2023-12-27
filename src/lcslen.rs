@@ -9,7 +9,10 @@ pub fn recursive_lcslen(x: &Vec<char>, y: &Vec<char>, i: usize, j: usize) -> usi
     return val1.max(val2);
 }
 
-pub fn dynamic_lcslen(x: &Vec<char>, y: &Vec<char>, m: usize, n: usize) -> usize {
+pub fn dynamic_lcslen(x: &Vec<char>, y: &Vec<char>) -> usize {
+    let m = x.len();
+    let n = y.len();
+
     let mut matrix = vec![vec![0; (n + 1) as usize]; (m + 1) as usize];
 
     for i in 1..=m {
