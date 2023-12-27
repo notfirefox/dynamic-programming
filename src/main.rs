@@ -58,7 +58,7 @@ fn main() {
     let b = b.chars().collect();
 
     let x = lcslen::recursive_lcslen(&a, &b, a.len(), b.len());
-    let y = lcslen::dynamic_lcslen(&a, &b, a.len(), b.len());
+    let y = lcslen::dynamic_lcslen(&a, &b);
 
     println!("{}", x);
     println!("{}", y);
