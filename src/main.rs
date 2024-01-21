@@ -1,7 +1,7 @@
 mod binomial;
 mod fibonacci;
-mod trinomial;
 mod lcslen;
+mod trinomial;
 
 fn main() {
     println!("fibonacci(5)");
@@ -23,7 +23,10 @@ fn main() {
     println!("trinomial(5, 3)");
     let arg = (5, 3);
 
-    println!("Recursive: {}", trinomial::recursive_trinomial(arg.0, arg.1));
+    println!(
+        "Recursive: {}",
+        trinomial::recursive_trinomial(arg.0, arg.1)
+    );
     println!("Array: {}", trinomial::matrix_trinomial(arg.0, arg.1));
     println!("Dyanamic: {}", trinomial::dynamic_trinomial(arg.0, arg.1));
     println!("==========");
@@ -32,7 +35,10 @@ fn main() {
     let a = "TGCGTCCAT".chars().collect();
     let b = "TACGTGCGCT".chars().collect();
 
-    println!("Recursive: {}", lcslen::recursive_lcslen(&a, &b, a.len(), b.len()));
+    println!(
+        "Recursive: {}",
+        lcslen::recursive_lcslen(&a, &b, a.len(), b.len())
+    );
     println!("Dyanamic: {}", lcslen::dynamic_lcslen(&a, &b));
 }
 
