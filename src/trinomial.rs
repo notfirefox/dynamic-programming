@@ -1,12 +1,13 @@
+// TODO: Consider rewriting trinomial methods
 pub fn recursive_trinomial(n: i32, k: i32) -> i32 {
     if k.abs() == n {
         return 1;
     } else if k.abs() > n {
         return 0;
     }
-    return recursive_trinomial(n - 1, k - 1) 
+    recursive_trinomial(n - 1, k - 1) 
          + recursive_trinomial(n - 1, k) 
-         + recursive_trinomial(n - 1, k + 1);
+         + recursive_trinomial(n - 1, k + 1)
 }
 
 pub fn matrix_trinomial(n: i32, k: i32) -> i32 {
@@ -25,7 +26,7 @@ pub fn matrix_trinomial(n: i32, k: i32) -> i32 {
         }
     }
 
-    return matrix[n as usize][k as usize];
+    matrix[n as usize][k as usize]
 }
 
 pub fn dynamic_trinomial(n: i32, k: i32) -> i32 {
@@ -46,5 +47,5 @@ pub fn dynamic_trinomial(n: i32, k: i32) -> i32 {
         vec1.swap_with_slice(&mut vec2);
     }
 
-    return vec2[k as usize];
+    vec2[k as usize]
 }

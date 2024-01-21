@@ -8,11 +8,11 @@ F_n = F_{n-1} + F_{n-2}
 ```
 This can be directly translated into the following Rust code using recursion:
 ```rust
-pub fn recursive_fibonacci(n: i32) -> i32 {
+pub fn recursive_fibonacci(n: usize) -> usize {
     if n == 0 || n == 1 {
         return n;
     }
-    return recursive_fibonacci(n - 1) + recursive_fibonacci(n - 2);
+    recursive_fibonacci(n - 1) + recursive_fibonacci(n - 2)
 }
 ```
 The code is easily comprehensible, but the runtime of it is rather poor.
@@ -51,18 +51,18 @@ This way we don't need to calculate a subproblem multiple times.
 The code for a primitive calculation storing all calculated values 
 could like as follows.
 ```rust
-pub fn array_fibonacci(n: i32) -> i32 {
-    let mut vector = vec![0; (n + 1) as usize];
+pub fn array_fibonacci(n: usize) -> usize {
+    let mut vector = vec![0; n + 1];
     vector[0] = 0;
     vector[1] = 1;
 
     for i in 2..=n {
-        let x = vector[(i - 1) as usize];
-        let y = vector[(i - 2) as usize];
-        vector[i as usize] = x + y;
+        let x = vector[i - 1];
+        let y = vector[(i - 2)];
+        vector[i] = x + y;
     }
 
-    return vector[n as usize];
+    vector[n]
 }
 ```
 At this point there is one more optimization that could me made regarding
@@ -70,7 +70,7 @@ its memory usage. In order to calculate $F_n$ we only need to store $F_{n-1}$
 and $F_{n-2}$. So we do not to store the whole sequence of fibonacci numbers
 inside of an array. So the final form would like this:
 ```rust
-pub fn dynamic_fibonacci(n: i32) -> i32 {
+pub fn dynamic_fibonacci(n: usize) -> usize {
     let mut x = 0;
     let mut y = 1;
 
@@ -80,7 +80,7 @@ pub fn dynamic_fibonacci(n: i32) -> i32 {
         x = t;
     }
 
-    return x;
+    x
 }
 ```
 
@@ -93,11 +93,11 @@ where $\binom{n}{0}=1$ and $\binom{n}{n}=1$.
 
 The naive approach would be using recursion:
 ```rust
-pub fn recursive_binomial(n: i32, k: i32) -> i32 {
+pub fn recursive_binomial(n: usize, k: usize) -> usize {
     if n == k || k == 0 {
         return 1;
     }
-    return recursive_binomial(n - 1, k - 1) + recursive_binomial(n - 1, k);
+    recursive_binomial(n - 1, k - 1) + recursive_binomial(n - 1, k)
 }
 ```
 
@@ -141,22 +141,21 @@ using a matrix:
 
 The code for populating the matrix would look as follows.
 ```rust
-pub fn matrix_binomial(n: i32, k: i32) -> i32 {
-    let mut matrix = vec![vec![0; (k + 1) as usize]; (n + 1) as usize];
+pub fn matrix_binomial(n: usize, k: usize) -> usize {
+    let mut matrix = vec![vec![0; k + 1]; n + 1];
 
     for i in 1..=n {
         for j in 0..=k {
             if i == j || j == 0 {
-                matrix[i as usize][j as usize] = 1;
+                matrix[i][j] = 1;
             } else {
-                let val = matrix[(i - 1) as usize][(j - 1) as usize] 
-                        + matrix[(i - 1) as usize][(j) as usize];
-                matrix[i as usize][j as usize] = val;
+                let val = matrix[i - 1][j - 1] + matrix[i - 1][j];
+                matrix[i][j] = val;
             }
         }
     }
 
-    return matrix[n as usize][k as usize];
+    matrix[n][k]
 }
 ```
 
@@ -165,22 +164,22 @@ $R_x$ with $x > 0$ we only need $R_{x-1}$. So in total
 we only need one row $R_x$ to store the current values and one row
 $R_{x-1}$ to access the previously calculated values.
 ```rust
-pub fn dynamic_binomial(n: i32, k: i32) -> i32 {
-    let mut vec1 = vec![0; (k + 1) as usize];
-    let mut vec2 = vec![0; (k + 1) as usize];
+pub fn dynamic_binomial(n: usize, k: usize) -> usize {
+    let mut vec1 = vec![0; k + 1];
+    let mut vec2 = vec![0; k + 1];
 
     for i in 0..=n {
         for j in 0..=k {
             if i == j || j == 0 {
-                vec1[j as usize] = 1;
+                vec1[j] = 1;
             } else {
-                vec1[j as usize] = vec2[(j - 1) as usize] + vec2[j as usize];
+                vec1[j] = vec2[j - 1] + vec2[j];
             }
         }
         vec1.swap_with_slice(&mut vec2);
     }
 
-    return vec2[k as usize];
+    vec2[k]
 }
 ```
 
@@ -295,7 +294,7 @@ pub fn dynamic_lcslen(x: &Vec<char>, y: &Vec<char>) -> usize {
     let m = x.len();
     let n = y.len();
 
-    let mut matrix = vec![vec![0; (n + 1) as usize]; (m + 1) as usize];
+    let mut matrix = vec![vec![0; n + 1]; m + 1];
 
     for i in 1..=m {
         for j in 1..=n {
@@ -309,6 +308,6 @@ pub fn dynamic_lcslen(x: &Vec<char>, y: &Vec<char>) -> usize {
         }
     }
 
-    return matrix[m][n];
+    matrix[m][n]
 }
 ```
