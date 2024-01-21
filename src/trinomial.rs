@@ -5,9 +5,9 @@ pub fn recursive_trinomial(n: i32, k: i32) -> i32 {
     } else if k.abs() > n {
         return 0;
     }
-    recursive_trinomial(n - 1, k - 1) 
-         + recursive_trinomial(n - 1, k) 
-         + recursive_trinomial(n - 1, k + 1)
+    recursive_trinomial(n - 1, k - 1)
+        + recursive_trinomial(n - 1, k)
+        + recursive_trinomial(n - 1, k + 1)
 }
 
 pub fn matrix_trinomial(n: i32, k: i32) -> i32 {
@@ -18,9 +18,9 @@ pub fn matrix_trinomial(n: i32, k: i32) -> i32 {
             if i == j {
                 matrix[i as usize][j as usize] = 1;
             } else if j < i {
-                let val = matrix[(i - 1) as usize][(j - 1).abs() as usize] 
-                        + matrix[(i - 1) as usize][j as usize]
-                        + matrix[(i - 1) as usize][(j + 1) as usize];
+                let val = matrix[(i - 1) as usize][(j - 1).abs() as usize]
+                    + matrix[(i - 1) as usize][j as usize]
+                    + matrix[(i - 1) as usize][(j + 1) as usize];
                 matrix[i as usize][j as usize] = val;
             }
         }
@@ -38,9 +38,7 @@ pub fn dynamic_trinomial(n: i32, k: i32) -> i32 {
             if i == j {
                 vec1[j as usize] = 1;
             } else if j < i {
-                let val = vec2[(j - 1).abs() as usize]
-                        + vec2[j as usize]
-                        + vec2[(j + 1) as usize];
+                let val = vec2[(j - 1).abs() as usize] + vec2[j as usize] + vec2[(j + 1) as usize];
                 vec1[j as usize] = val;
             }
         }
