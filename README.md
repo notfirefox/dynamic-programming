@@ -10,7 +10,7 @@ Run the program using the following command.
 cargo run
 ```
 
-The output could look like this:
+Example output is shown below.
 ```
 $ cargo run
 fibonacci(5)
