@@ -4,35 +4,6 @@ Concepts of Dynamic Programming
 ## :clipboard: Requirements 
 - Rust
 
-## :rocket: Usage
-Run the program using the following command.
-```sh
-cargo run
-```
-
-Example output is shown below.
-```
-$ cargo run
-fibonacci(5)
-Recursive: 5
-Array: 5
-Dyanamic: 5
-==========
-binomial(5, 3)
-Recursive: 10
-Array: 10
-Dyanamic: 10
-==========
-trinomial(5, 3)
-Recursive: 15
-Array: 15
-Dyanamic: 15
-==========
-lcslen(TGCGTCCAT,  TACGTGCGCT)
-Recursive: 7
-Dyanamic: 7
-```
-
 ## :blue_book: Theory
 
 ### Fibonacci
@@ -345,4 +316,33 @@ pub fn dynamic_lcslen(x: &Vec<char>, y: &Vec<char>) -> usize {
 
     matrix[m][n]
 }
+```
+
+## :rocket: Usage
+Run the program using the following command.
+```sh
+cargo run
+```
+
+Example output is shown below.
+```
+$ cargo run
+fibonacci(5)
+Recursive: 5
+Array: 5
+Dyanamic: 5
+==========
+binomial(5, 3)
+Recursive: 10
+Array: 10
+Dyanamic: 10
+==========
+trinomial(5, 3)
+Recursive: 15
+Array: 15
+Dyanamic: 15
+==========
+lcslen(TGCGTCCAT,  TACGTGCGCT)
+Recursive: 7
+Dyanamic: 7
 ```
