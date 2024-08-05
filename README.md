@@ -1,6 +1,18 @@
 # Dynamic Programming
+Concepts of Dynamic Programming
 
-## Fibonacci
+## :clipboard: Requirements 
+- Rust
+
+## :rocket: Usage
+Run the program using the following command.
+```sh
+cargo run
+```
+
+## :blue_book: Theory
+
+### Fibonacci
 The Fibonacci number $F_n$ can be calculated using 
 the following formula where $F_0=0$ and $F_1=1$.
 ```math
@@ -84,7 +96,7 @@ pub fn dynamic_fibonacci(n: usize) -> usize {
 }
 ```
 
-## Binomial Coefficients
+### Binomial Coefficients
 Binomial Coeeficients can be calculated using the following formula,
 where $\binom{n}{0}=1$ and $\binom{n}{n}=1$.
 ```math
@@ -183,7 +195,7 @@ pub fn dynamic_binomial(n: usize, k: usize) -> usize {
 }
 ```
 
-## Trinomial Coefficients
+### Trinomial Coefficients
 The trinomial coefficients can be calculated using the below function with 
 $\binom{n}{k}_2=1$ if $|k|=n$ and $\binom{n}{k}_2=0$ if $|k|>n$.
 ```math
@@ -270,7 +282,7 @@ pub fn dynamic_trinomial(n: i32, k: i32) -> i32 {
 }
 ```
 
-## Longest Common Subsequence
+### Longest Common Subsequence
 Given two sequences $X=(x_1,...x_m)$ and $Y=(y_1,...,y_n)$, the
 length of their longest common subsequence can be calculated using
 the following formula.
