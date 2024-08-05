@@ -10,6 +10,29 @@ Run the program using the following command.
 cargo run
 ```
 
+The output could look like this:
+```
+$ cargo run
+fibonacci(5)
+Recursive: 5
+Array: 5
+Dyanamic: 5
+==========
+binomial(5, 3)
+Recursive: 10
+Array: 10
+Dyanamic: 10
+==========
+trinomial(5, 3)
+Recursive: 15
+Array: 15
+Dyanamic: 15
+==========
+lcslen(TGCGTCCAT,  TACGTGCGCT)
+Recursive: 7
+Dyanamic: 7
+```
+
 ## :blue_book: Theory
 
 ### Fibonacci
